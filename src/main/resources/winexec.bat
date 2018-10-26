@@ -1,0 +1,1 @@
+java -jar jar/Appointment-Booking-1.0-jar-with-dependencies
