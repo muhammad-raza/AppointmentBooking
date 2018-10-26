@@ -1,1 +1,3 @@
-java -jar jar/Appointment-Booking-1.0-jar-with-dependencies
+#! /bin/bash
+cd `dirname $0`
+java -jar Appointment-Booking.jar
