@@ -28,7 +28,8 @@ public class AppointmentBooking implements Runnable {
     @Override
     public void run() {
         try {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
+//           System.setProperty("webdriver.chrome.driver", "chromedriver");
+            System.setProperty("webdriver.chrome.driver", new File("chromedriver").getAbsolutePath());
             this.driver = new ChromeDriver();
             checkAppointAvailability();
         } catch (Exception e) {
@@ -69,8 +70,8 @@ public class AppointmentBooking implements Runnable {
         AudioInputStream inputStream = null;
         Clip clip = AudioSystem.getClip();
         try {
-            inputStream = AudioSystem.getAudioInputStream(
-                    new File("alert.wav"));
+            InputStream audioResource = getClass().getClassLoader().getResourceAsStream("alert.wav");
+            inputStream = AudioSystem.getAudioInputStream(new BufferedInputStream(audioResource));
             clip.open(inputStream);
             clip.start();
             Thread.sleep(10000);
